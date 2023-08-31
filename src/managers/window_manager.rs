@@ -1,9 +1,9 @@
 use crate::common::common_constants::DefaultWindowSettings;
 use bevy::prelude::*;
 
-pub struct WindowSystemPlugin;
+pub struct WindowManagerPlugin;
 
-impl Plugin for WindowSystemPlugin {
+impl Plugin for WindowManagerPlugin {
     fn build(&self, app: &mut App) {
         let default_window = Window {
             title: DefaultWindowSettings::WINDOW_TITLE.into(),
