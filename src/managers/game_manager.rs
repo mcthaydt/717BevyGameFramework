@@ -1,4 +1,5 @@
 use super::window_manager;
+use crate::common::common_states;
 use crate::screens;
 use bevy::prelude::*;
 
@@ -9,9 +10,11 @@ impl Plugin for GameManagerPlugin {
         app.add_plugins((
             window_manager::WindowManagerPlugin, // Create Window
             screens::ScreenManagerPlugin,        // Create Screens
-        ));
+        ))
+        .add_state::<common_states::GameState>();
     }
 }
 
 //move input here
 //move audio here
+//move render here

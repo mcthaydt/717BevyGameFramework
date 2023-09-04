@@ -1,6 +1,9 @@
 use bevy::prelude::*;
 use bevy_inspector_egui::prelude::*;
 
+#[derive(Resource, Deref, DerefMut)]
+pub struct SplashScreenTimer(pub Timer);
+
 #[derive(Component, Reflect, InspectorOptions)]
 #[reflect(InspectorOptions)]
 pub struct Player {

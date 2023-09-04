@@ -5,6 +5,6 @@ pub struct GameplayScreenPlugin;
 
 impl Plugin for GameplayScreenPlugin {
     fn build(&self, app: &mut App) {
-        app.add_plugins(GameplaySystemsPlugin);
+        // app.add_plugins(GameplaySystemsPlugin);
     }
 }

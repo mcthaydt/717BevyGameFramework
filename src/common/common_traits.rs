@@ -37,3 +37,11 @@ impl Default for Light {
         }
     }
 }
+
+impl Default for SplashScreenTimer {
+    fn default() -> Self {
+        Self {
+            0: Timer::from_seconds(3.0, TimerMode::Once),
+        }
+    }
+}
