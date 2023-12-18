@@ -1,3 +1,4 @@
+use crate::common::common_states::GameState;
 use bevy::prelude::*;
 
 use crate::common::common_components::Light;
@@ -6,8 +7,8 @@ pub struct LightingSystemPlugin;
 
 impl Plugin for LightingSystemPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, create_light_entity)
-            .add_systems(PostStartup, create_light);
+        app.add_systems(OnEnter(GameState::Gameplay), create_light_entity)
+            .add_systems(Update, create_light.run_if(in_state(GameState::Gameplay)));
     }
 }
 

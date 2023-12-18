@@ -1,12 +1,16 @@
 use crate::common::common_components::Floor;
+use crate::common::common_states::GameState;
 use bevy::prelude::*;
 
 pub struct StaticMeshSystemPlugin;
 
 impl Plugin for StaticMeshSystemPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, create_floor_entity)
-            .add_systems(PostStartup, create_floor_mesh);
+        app.add_systems(OnEnter(GameState::Gameplay), create_floor_entity)
+            .add_systems(
+                Update,
+                create_floor_mesh.run_if(in_state(GameState::Gameplay)),
+            );
     }
 }
 

@@ -14,7 +14,3 @@ impl Plugin for GameManagerPlugin {
         .add_state::<common_states::GameState>();
     }
 }
-
-//move input here
-//move audio here
-//move render here

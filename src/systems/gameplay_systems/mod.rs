@@ -14,8 +14,6 @@ impl Plugin for GameplaySystemsPlugin {
             static_mesh_system::StaticMeshSystemPlugin,       // Create Static Bodies
             camera_system::CameraSystemPlugin,                // Create Camera
             lighting_system::LightingSystemPlugin,            // Configure Lighting and Enviroment
-                                                              // Configure Physics
-                                                              // Configure Collision
         ));
     }
 }

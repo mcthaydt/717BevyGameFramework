@@ -1,12 +1,16 @@
 use crate::common::common_components::*;
+use crate::common::common_states::GameState;
 use bevy::prelude::*;
 
 pub struct KinematicMeshSystemPlugin;
 
 impl Plugin for KinematicMeshSystemPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, create_player_entity)
-            .add_systems(PostStartup, create_player_mesh);
+        app.add_systems(OnEnter(GameState::Gameplay), create_player_entity)
+            .add_systems(
+                Update,
+                create_player_mesh.run_if(in_state(GameState::Gameplay)),
+            );
     }
 }
 

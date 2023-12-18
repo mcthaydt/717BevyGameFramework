@@ -7,7 +7,7 @@ pub struct DebugPlugin;
 
 impl Plugin for DebugPlugin {
     fn build(&self, app: &mut App) {
-        app.add_plugins(WorldInspectorPlugin::new())
+        app.add_plugins(WorldInspectorPlugin::default())
             .register_type::<common_components::Player>()
             .register_type::<common_components::GameCamera>()
             .register_type::<common_components::Light>()

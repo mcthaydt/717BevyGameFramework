@@ -1,13 +1,13 @@
-use bevy::prelude::*;
-
 use crate::common::common_components::GameCamera;
+use crate::common::common_states::GameState;
+use bevy::prelude::*;
 
 pub struct CameraSystemPlugin;
 
 impl Plugin for CameraSystemPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, create_camera_entity)
-            .add_systems(PostStartup, create_camera);
+        app.add_systems(OnEnter(GameState::Gameplay), create_camera_entity)
+            .add_systems(Update, create_camera.run_if(in_state(GameState::Gameplay)));
     }
 }
 
@@ -34,5 +34,3 @@ fn create_camera(
             .insert(Name::new("Camera"));
     }
 }
-
-// Track Player Position and Rotation
