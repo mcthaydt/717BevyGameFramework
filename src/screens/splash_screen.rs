@@ -10,18 +10,14 @@ struct SplashTimer(Timer);
 
 impl Plugin for SplashScreenPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, setup)
-            .add_systems(OnEnter(GameState::Splash), splash_setup)
+        app.add_systems(OnEnter(GameState::Splash), splash_setup)
             .add_systems(Update, countdown.run_if(in_state(GameState::Splash)))
             .add_systems(OnExit(GameState::Splash), despawn_screen::<OnSplashScreen>);
     }
 }
 
-fn setup(mut commands: Commands) {
-    commands.spawn((Camera2dBundle::default(), OnSplashScreen));
-}
-
 fn splash_setup(mut commands: Commands, asset_server: Res<AssetServer>) {
+    commands.spawn((Camera2dBundle::default(), OnSplashScreen));
     let icon = asset_server.load("icon.png");
 
     let screen_canvas = NodeBundle {
@@ -70,6 +66,6 @@ fn countdown(
     mut timer: ResMut<SplashTimer>,
 ) {
     if timer.tick(time.delta()).finished() {
-        game_state.set(GameState::Gameplay);
+        game_state.set(GameState::MainMenu);
     }
 }
