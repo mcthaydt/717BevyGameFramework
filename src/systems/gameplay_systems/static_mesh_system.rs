@@ -1,5 +1,6 @@
 use crate::common::common_components::Floor;
 use crate::common::common_states::GameState;
+use crate::common::common_tags::OnGameplayScreen;
 use bevy::prelude::*;
 
 pub struct StaticMeshSystemPlugin;
@@ -37,6 +38,7 @@ fn create_floor_mesh(
         commands
             .entity(floor_entity)
             .insert(floor_bundle)
+            .insert(OnGameplayScreen)
             .insert(Name::new("Floor"));
     }
 }

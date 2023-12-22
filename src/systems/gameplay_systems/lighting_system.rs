@@ -1,4 +1,5 @@
 use crate::common::common_states::GameState;
+use crate::common::common_tags::OnGameplayScreen;
 use bevy::prelude::*;
 
 use crate::common::common_components::Light;
@@ -31,6 +32,7 @@ fn create_light(light_query: Query<(Entity, &Light), With<Light>>, mut commands:
         commands
             .entity(light_entity)
             .insert(scene_point_light)
+            .insert(OnGameplayScreen)
             .insert(Name::new("Lamp"));
     }
 }

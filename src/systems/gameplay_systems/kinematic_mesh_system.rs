@@ -1,5 +1,6 @@
 use crate::common::common_components::*;
 use crate::common::common_states::GameState;
+use crate::common::common_tags::OnGameplayScreen;
 use bevy::prelude::*;
 
 pub struct KinematicMeshSystemPlugin;
@@ -39,6 +40,7 @@ fn create_player_mesh(
         commands
             .entity(player_entity)
             .insert(player_bundle)
+            .insert(OnGameplayScreen)
             .insert(Name::new("Player"));
     }
 }

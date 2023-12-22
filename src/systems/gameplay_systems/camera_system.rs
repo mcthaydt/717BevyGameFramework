@@ -1,5 +1,6 @@
 use crate::common::common_components::GameCamera;
 use crate::common::common_states::GameState;
+use crate::common::common_tags::OnGameplayScreen;
 use bevy::prelude::*;
 
 pub struct CameraSystemPlugin;
@@ -31,6 +32,7 @@ fn create_camera(
         commands
             .entity(camera_entity)
             .insert(camera_bundle)
+            .insert(OnGameplayScreen)
             .insert(Name::new("Camera"));
     }
 }

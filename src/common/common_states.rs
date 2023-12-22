@@ -6,4 +6,5 @@ pub enum GameState {
     Splash,
     MainMenu,
     Gameplay,
+    GameEnd,
 }
