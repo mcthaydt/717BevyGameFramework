@@ -1,4 +1,6 @@
 use crate::common::common_states::GameState;
+use crate::common::common_systems::despawn_screen;
+use crate::common::common_tags::OnGameplayScreen;
 use crate::systems::gameplay_systems::GameplaySystemsPlugin;
 use bevy::prelude::*;
 
@@ -11,7 +13,11 @@ impl Plugin for GameplayScreenPlugin {
     fn build(&self, app: &mut App) {
         app.add_plugins(GameplaySystemsPlugin)
             .add_systems(OnEnter(GameState::Gameplay), gameplay_setup)
-            .add_systems(Update, countdown.run_if(in_state(GameState::Gameplay)));
+            .add_systems(Update, countdown.run_if(in_state(GameState::Gameplay)))
+            .add_systems(
+                OnExit(GameState::Gameplay),
+                despawn_screen::<OnGameplayScreen>,
+            );
     }
 }
 
