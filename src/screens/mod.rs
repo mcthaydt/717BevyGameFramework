@@ -1,3 +1,6 @@
+use crate::common::common_states::GameState;
+use crate::common::common_systems::despawn_screen;
+use crate::common::common_tags::OnGameplayScreen;
 use bevy::prelude::*;
 
 mod game_end_screen;
@@ -14,6 +17,10 @@ impl Plugin for ScreenManagerPlugin {
             main_menu_screen::MainMenuScreenPlugin,
             gameplay_screen::GameplayScreenPlugin,
             game_end_screen::GameEndScreenPlugin,
-        ));
+        ))
+        .add_systems(
+            OnExit(GameState::Gameplay),
+            despawn_screen::<OnGameplayScreen>,
+        );
     }
 }
